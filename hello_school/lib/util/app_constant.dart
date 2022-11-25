@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-
+//iamges
+String icHome = "assets/images/ic_home.png";
+String icMessage = "assets/images/ic_message.png";
+String icNotification = "assets/images/ic_notification.png";
+String icProfile = "assets/images/ic_profile.png";
+String icMenu = "assets/images/ic_menu.png";
 
 //screen Size
 double screenWidth(context) {
   return MediaQuery.of(context).size.width;
 }
+
 double screenHeight(context) {
   return MediaQuery.of(context).size.height;
 }

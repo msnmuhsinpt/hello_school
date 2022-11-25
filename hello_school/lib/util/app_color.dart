@@ -6,4 +6,5 @@ class AppColor {
   static const kRed = Color(0xfff80303);
   static const kBlue = Color(0xff1571ec);
   static const kGreen = Color(0xff74B211);
+  static const kGrey = Color.fromARGB(255, 104, 105, 101);
 }

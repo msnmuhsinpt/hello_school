@@ -1,5 +1,7 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_school/util/app_color.dart';
+import 'package:hello_school/util/app_constant.dart';
 
 ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
 
@@ -12,33 +14,55 @@ class BottomNavigationWidget extends StatelessWidget {
       valueListenable: indexChangeNotifier,
       builder: (context, int newIndex, _) {
         return ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          ),
-          child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              currentIndex: newIndex,
-              onTap: (index) => indexChangeNotifier.value = index,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.grey,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(25.0),
+              topRight: Radius.circular(25.0),
+            ),
+            child: BottomNavyBar(
+              selectedIndex: newIndex,
+              onItemSelected: (index) => indexChangeNotifier.value = index,
+              animationDuration: const Duration(microseconds: 300),
               backgroundColor: AppColor.kBlue,
-              selectedIconTheme: const IconThemeData(color: Colors.white),
-              unselectedIconTheme: const IconThemeData(color: Colors.grey),
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home_filled,
+              curve: Curves.easeInCirc,
+              containerHeight: 75,
+              itemCornerRadius: 25,
+              iconSize: 10,
+              items: [
+                BottomNavyBarItem(
+                  icon: Image.asset(
+                    icHome,
+                    width: 25,
+                    color: AppColor.kWhite,
+                  ),
+                  title: const Text('Home'),
+                  activeColor: AppColor.kWhite,
+                ),
+                BottomNavyBarItem(
+                    icon: Image.asset(
+                      icMessage,
+                      width: 25,
+                      color: AppColor.kWhite,
                     ),
-                    label: ''),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.message_rounded), label: ''),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.notifications_rounded), label: ''),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline), label: ''),
-              ]),
-        );
+                    title: const Text('Message'),
+                    activeColor: AppColor.kWhite),
+                BottomNavyBarItem(
+                    icon: Image.asset(
+                      icNotification,
+                      width: 25,
+                      color: AppColor.kWhite,
+                    ),
+                    title: const Text('Notification'),
+                    activeColor: AppColor.kWhite),
+                BottomNavyBarItem(
+                    icon: Image.asset(
+                      icProfile,
+                      width: 25,
+                      color: AppColor.kWhite,
+                    ),
+                    title: const Text('Profile'),
+                    activeColor: AppColor.kWhite),
+              ],
+            ));
       },
     );
   }
